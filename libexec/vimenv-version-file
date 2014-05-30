@@ -6,8 +6,8 @@ set -e
 find_local_version_file() {
   local root="$1"
   while [ -n "$root" ]; do
-    if [ -e "${root}/.ruby-version" ]; then
-      echo "${root}/.ruby-version"
+    if [ -e "${root}/.vim-version" ]; then
+      echo "${root}/.vim-version"
       exit
     elif [ -e "${root}/.vimenv-version" ]; then
       echo "${root}/.vimenv-version"

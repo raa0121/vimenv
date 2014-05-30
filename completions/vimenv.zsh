@@ -2,7 +2,7 @@ if [[ ! -o interactive ]]; then
     return
 fi
 
-compctl -K _vimenv rbenv
+compctl -K _vimenv vimenv
 
 _vimenv() {
   local words completions

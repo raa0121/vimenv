@@ -75,7 +75,7 @@ else
   versions="$(vimenv-whence "$VIMENV_COMMAND" || true)"
   if [ -n "$versions" ]; then
     { echo
-      echo "The \`$1' command exists in these Ruby versions:"
+      echo "The \`$1' command exists in these Vim versions:"
       echo "$versions" | sed 's/^/  /g'
       echo
     } >&2

@@ -13,4 +13,4 @@ _vimenv() {
   fi
 }
 
-complete -F _vimenv rbenv
+complete -F _vimenv vimenv

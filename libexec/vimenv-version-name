@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Summary: Show the current Ruby version
+# Summary: Show the current Vim version
 set -e
 [ -n "$VIMENV_DEBUG" ] && set -x
 
@@ -20,11 +20,11 @@ version_exists() {
 
 if version_exists "$VIMENV_VERSION"; then
   echo "$VIMENV_VERSION"
-elif version_exists "${VIMENV_VERSION#ruby-}"; then
-  { echo "warning: ignoring extraneous \`ruby-' prefix in version \`${VIMENV_VERSION}'"
+elif version_exists "${VIMENV_VERSION#vim-}"; then
+  { echo "warning: ignoring extraneous \`vim-' prefix in version \`${VIMENV_VERSION}'"
     echo "         (set by $(vimenv-version-origin))"
   } >&2
-  echo "${VIMENV_VERSION#ruby-}"
+  echo "${VIMENV_VERSION#vim-}"
 else
   echo "vimenv: version \`$VIMENV_VERSION' is not installed" >&2
   exit 1

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Summary: Display prefix for a Ruby version
+# Summary: Display prefix for a Vim version
 # Usage: vimenv prefix [<version>]
 #
-# Displays the directory where a Ruby version is installed. If no
+# Displays the directory where a Vim version is installed. If no
 # version is given, `vimenv prefix' displays the location of the
 # currently selected version.
 
@@ -22,9 +22,9 @@ elif [ -z "$VIMENV_VERSION" ]; then
 fi
 
 if [ "$VIMENV_VERSION" = "system" ]; then
-  RUBY_PATH="$(vimenv-which ruby)"
-  RUBY_PATH="${RUBY_PATH%/*}"
-  echo "${RUBY_PATH%/bin}"
+  VIM_PATH="$(vimenv-which vim)"
+  VIM_PATH="${VIM_PATH%/*}"
+  echo "${VIM_PATH%/bin}"
   exit
 fi
 

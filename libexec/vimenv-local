@@ -1,27 +1,27 @@
 #!/usr/bin/env bash
 #
-# Summary: Set or show the local application-specific Ruby version
+# Summary: Set or show the local application-specific Vim version
 #
 # Usage: vimenv local <version>
 #        vimenv local --unset
 #
-# Sets the local application-specific Ruby version by writing the
-# version name to a file named `.ruby-version'.
+# Sets the local application-specific Vim version by writing the
+# version name to a file named `.vim-version'.
 #
-# When you run a Ruby command, vimenv will look for a `.ruby-version'
+# When you run a Vim command, vimenv will look for a `.vim-version'
 # file in the current directory and each parent directory. If no such
-# file is found in the tree, vimenv will use the global Ruby version
+# file is found in the tree, vimenv will use the global Vim version
 # specified with `vimenv global'. A version specified with the
 # `VIMENV_VERSION' environment variable takes precedence over local
 # and global versions.
 #
 # For backwards compatibility, vimenv will also read version
-# specifications from `.vimenv-version' files, but a `.ruby-version'
+# specifications from `.vimenv-version' files, but a `.vim-version'
 # file in the same directory takes precedence.
 #
-# <version> should be a string matching a Ruby version known to vimenv.
-# The special version string `system' will use your default system Ruby.
-# Run `vimenv versions' for a list of available Ruby versions.
+# <version> should be a string matching a Vim version known to vimenv.
+# The special version string `system' will use your default system Vim.
+# Run `vimenv versions' for a list of available Vim versions.
 
 set -e
 [ -n "$VIMENV_DEBUG" ] && set -x
@@ -36,17 +36,17 @@ fi
 VIMENV_VERSION="$1"
 
 if [ "$VIMENV_VERSION" = "--unset" ]; then
-  rm -f .ruby-version .vimenv-version
+  rm -f .vim-version .vimenv-version
 elif [ -n "$VIMENV_VERSION" ]; then
   if [ "$(VIMENV_VERSION= vimenv-version-origin)" -ef .vimenv-version ]; then
     rm -f .vimenv-version
     { echo "vimenv: removed existing \`.vimenv-version' file and migrated"
-      echo "       local version specification to \`.ruby-version' file"
+      echo "       local version specification to \`.vim-version' file"
     } >&2
   fi
-  vimenv-version-file-write .ruby-version "$VIMENV_VERSION"
+  vimenv-version-file-write .vim-version "$VIMENV_VERSION"
 else
-  vimenv-version-file-read .ruby-version ||
+  vimenv-version-file-read .vim-version ||
   vimenv-version-file-read .vimenv-version ||
   { echo "vimenv: no local version configured for this directory"
     exit 1
